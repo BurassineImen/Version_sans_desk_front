@@ -1,0 +1,466 @@
+/* Categories.css */
+.categories-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.category-form {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.category-form h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1e293b;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input[type="color"] {
+  padding: 4px;
+  height: 44px;
+  cursor: pointer;
+}
+
+/* Styles pour le groupe de couleur */
+.color-input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.color-picker {
+  width: 60px !important;
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.color-text-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.color-help {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #6b7280;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.category-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category-header {
+  padding: 16px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.category-content {
+  padding: 16px;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.category-content p {
+  margin: 0;
+}
+
+.category-actions {
+  padding: 12px 16px;
+  display: flex;
+  gap: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Styles pour les panneaux modaux (création et édition) */
+.edit-panel,
+.create-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.edit-panel-content,
+.create-panel-content {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+.edit-panel-content h3,
+.create-panel-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Bouton de fermeture */
+.edit-panel-close,
+.create-panel-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.edit-panel-close:hover,
+.create-panel-close:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Styles pour les formulaires dans les panneaux modaux */
+.edit-panel .form-group,
+.create-panel .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-panel .form-group label,
+.create-panel .form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.edit-panel .form-group input,
+.edit-panel .form-group textarea,
+.create-panel .form-group input,
+.create-panel .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1e293b;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.edit-panel .form-group input:focus,
+.edit-panel .form-group textarea:focus,
+.create-panel .form-group input:focus,
+.create-panel .form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.edit-panel .form-group textarea,
+.create-panel .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-panel .color-input-group,
+.create-panel .color-input-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-panel .color-picker,
+.create-panel .color-picker {
+  width: 60px !important;
+  height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.edit-panel .color-text-input,
+.create-panel .color-text-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.edit-panel .color-help,
+.create-panel .color-help {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 4px;
+  display: block;
+}
+
+.edit-panel .form-actions,
+.create-panel .form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-form {
+    padding: 16px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+  }
+
+  .edit-panel-content,
+  .create-panel-content {
+    padding: 24px;
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .edit-panel .form-actions,
+  .create-panel .form-actions {
+    flex-direction: column;
+  }
+
+  .edit-panel .form-actions .btn,
+  .create-panel .form-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .category-form h3 {
+    font-size: 1.25rem;
+  }
+
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .edit-panel-content,
+  .create-panel-content {
+    padding: 20px;
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .edit-panel-content h3,
+  .create-panel-content h3 {
+    font-size: 1.25rem;
+  }
+}

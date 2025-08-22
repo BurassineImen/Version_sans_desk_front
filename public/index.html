@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Application de génération et d'impression d'étiquettes produit par catégorie" />
+    <meta name="author" content="Étiquettes App" />
+    <meta name="keywords" content="étiquettes, produits, impression, prix, magasin, gestion" />
+    
+    <!-- Favicons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Title -->
+    <title>Étiquettes App - Génération d'étiquettes produit</title>
+    
+    <!-- SEO -->
+    <meta property="og:title" content="Étiquettes App - Génération d'étiquettes produit" />
+    <meta property="og:description" content="Application de génération et d'impression d'étiquettes produit par catégorie" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:3001" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Étiquettes App" />
+    <meta name="twitter:description" content="Application de génération et d'impression d'étiquettes produit par catégorie" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Styles pour éviter le flash de contenu non stylé -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        /* Loading screen */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Masquer le contenu jusqu'au chargement de React */
+        #root:empty + #loading {
+            display: flex;
+        }
+        
+        #root:not(:empty) + #loading {
+            display: none;
+        }
+        
+        /* Styles de base pour éviter les décalages */
+        code {
+            font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        }
+        
+        /* Accessibilité */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Focus visible pour l'accessibilité */
+        :focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+        
+        /* Réduction des mouvements pour les utilisateurs sensibles */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Mode sombre */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1e293b;
+                color: #e2e8f0;
+            }
+        }
+        
+        /* Impression */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <noscript>
+        <div style="padding: 20px; text-align: center; background: #fee2e2; color: #dc2626; border: 1px solid #fecaca;">
+            <h1>JavaScript requis</h1>
+            <p>Cette application nécessite JavaScript pour fonctionner correctement.</p>
+            <p>Veuillez activer JavaScript dans votre navigateur et recharger la page.</p>
+        </div>
+    </noscript>
+    
+    <!-- Contenu principal de l'application React -->
+    <div id="root" role="main" aria-label="Application de génération d'étiquettes"></div>
+    
+    <!-- Écran de chargement -->
+    <div id="loading">
+        <div>
+            <div class="spinner"></div>
+            <p style="margin-top: 16px; color: #64748b;">Chargement de l'application...</p>
+        </div>
+    </div>
+    
+    <!-- Contenu caché pour l'accessibilité -->
+    <div class="sr-only">
+        <h1>Étiquettes App - Application de génération d'étiquettes produit</h1>
+        <p>Navigation principale disponible après le chargement de l'application</p>
+    </div>
+    
+    <!-- Scripts pour l'amélioration progressive -->
+    <script>
+        // Détection des fonctionnalités
+        if (!window.localStorage) {
+            console.warn('LocalStorage non supporté');
+        }
+        
+        // Gestion des erreurs globales
+        window.addEventListener('error', function(e) {
+            console.error('Erreur globale:', e.error);
+        });
+        
+        // Gestion des erreurs de promesses non capturées
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Promesse rejetée:', e.reason);
+        });
+        
+        // Performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    if (perfData) {
+                        console.log('Temps de chargement:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+                    }
+                }, 0);
+            });
+        }
+        
+        // Service Worker pour la mise en cache (optionnel)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

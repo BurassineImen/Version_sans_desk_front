@@ -1,0 +1,283 @@
+/* Settings.css */
+.settings-page {
+  padding: 32px;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(180deg, #f9fafb 0%, #f1f5f9 100%);
+  min-height: 100vh;
+  border-radius: 12px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 16px;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.page-header .btn {
+  padding: 14px 28px; /* Match form button padding */
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #2563eb; /* Match btn-primary background */
+  color: #ffffff;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  text-decoration: none; /* Remove underline from Link */
+  display: inline-block; /* Ensure proper button display */
+  width: auto; /* Prevent full-width behavior */
+}
+
+.page-header .btn:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.issue-form {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s ease;
+}
+
+.issue-form:hover {
+  transform: translateY(-4px);
+}
+
+.issue-form h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+}
+
+.issue-form p {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.issue-form p a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.issue-form p a:hover {
+  color: #1e40af;
+  border-bottom-color: #1e40af;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #1e293b;
+  background: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  background: #f8fafc;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  max-height: 320px;
+}
+
+.form-group select.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #6b7280;
+  color: #ffffff;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #4b5563;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(75, 85, 99, 0.2);
+}
+
+.submit-message {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.submit-message.success {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #34d399;
+}
+
+.submit-message.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #f87171;
+}
+
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .page-header .btn {
+    width: auto; /* Ensure button doesn't stretch on mobile */
+  }
+
+  .issue-form {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .form-group select.form-select {
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-page {
+    padding: 16px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .issue-form {
+    padding: 16px;
+  }
+
+  .issue-form h3 {
+    font-size: 20px;
+  }
+
+  .issue-form p {
+    font-size: 14px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+}

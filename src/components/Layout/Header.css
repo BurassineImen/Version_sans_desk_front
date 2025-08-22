@@ -1,0 +1,390 @@
+/* ===============================================
+   HEADER STYLES - Application Étiquettes
+   =============================================== */
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: relative;
+}
+
+/* ===============================================
+   LOGO STYLES
+   =============================================== */
+
+.logo {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.logo-text h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.logo-subtitle {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 4px;
+}
+
+/* ===============================================
+   NAVIGATION STYLES
+   =============================================== */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+  left: 100%;
+}
+
+.nav-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  height: 3px;
+  background: #ffd700;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.1);
+}
+
+.nav-text {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ===============================================
+   HEADER ACTIONS
+   =============================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-settings,
+.btn-user {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.btn-settings:hover,
+.btn-user:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* ===============================================
+   MOBILE MENU TOGGLE
+   =============================================== */
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  padding: 0;
+  position: relative;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===============================================
+   RESPONSIVE DESIGN
+   =============================================== */
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .logo-text h1 {
+    font-size: 1.2rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    gap: 12px;
+  }
+
+  .nav.nav-mobile-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  .nav-icon {
+    font-size: 1.2rem;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .btn-settings,
+  .btn-user {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 12px;
+  }
+
+  .logo-content {
+    gap: 8px;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+
+  .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.6rem;
+  }
+
+  .nav {
+    padding: 16px;
+  }
+
+  .nav-link {
+    padding: 10px 12px;
+  }
+}
+
+/* ===============================================
+   ANIMATIONS & EFFECTS
+   =============================================== */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* ===============================================
+   ACCESSIBILITY
+   =============================================== */
+
+.nav-link:focus,
+.btn-settings:focus,
+.btn-user:focus,
+.mobile-menu-toggle:focus {
+  outline: 2px solid #ffd700;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link,
+  .logo,
+  .btn-settings,
+  .btn-user,
+  .mobile-menu-toggle span {
+    transition: none;
+  }
+}
+
+/* ===============================================
+   DARK MODE SUPPORT
+   =============================================== */
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .nav-link.active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+/* Add this new style for logout button */
+.btn-logout {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-logout:hover {
+  background: #c82333;
+}
